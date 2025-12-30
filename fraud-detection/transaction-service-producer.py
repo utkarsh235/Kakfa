@@ -2,11 +2,12 @@ from confluent_kafka import Producer
 import uuid
 import json
 
-producer_config = {
-    'bootstrap.servers': 'localhost:9092'
-}
-
-producer = Producer(producer_config)
+def initiate_producer():
+    producer_config = {
+        'bootstrap.servers': 'localhost:9092'
+    }
+    producer = Producer(producer_config)
+    return producer
 
 def delivery_report(err, msg):
     if err: 
@@ -24,6 +25,7 @@ def get_transaction():
     return json.dumps(transaction).encode('utf-8')
 
 def main():
+    producer = initiate_producer()
     for _ in range(3):
         transaction = get_transaction()
         producer.produce(
