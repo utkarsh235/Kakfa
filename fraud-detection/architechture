@@ -1,0 +1,13 @@
+transaction-service: 
+    role: only-producer
+    consumer: None
+	producer: transaction
+
+fraud-detection-service:
+    role: producer-consumer
+    consumer: transaction
+    producer: fraud (0/1), fraud-alert, transaction-saving
+
+alert-service:
+    role: only-consumer
+    consumer: fraud-alert

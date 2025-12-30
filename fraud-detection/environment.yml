@@ -1,0 +1,6 @@
+name: fraud-detection
+dependencies: 
+  - pip
+pip: 
+  - requests
+  - confluent-kafka
