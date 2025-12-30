@@ -55,15 +55,13 @@ def isAlert(response):
     return False
 
 def generateAlert(response):
-    print("in generate alert")
     alert = {
         'transaction_id': response['transaction_id'], 
-        'alert_id': "alert-" + str(uuid.uuid4)
+        'alert_id': "alert-" + str(uuid.uuid4())
     }
     return json.dumps(alert).encode('utf-8')
 
 def sendAlert(producer, alert):
-    print("in send alert")
     producer.produce(
         topic='alerts',
         value=alert,
