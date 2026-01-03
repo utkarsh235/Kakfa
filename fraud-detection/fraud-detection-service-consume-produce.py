@@ -1,6 +1,7 @@
 from confluent_kafka import Consumer, Producer
 import json
 import uuid
+from src.detect import detect
 
 def initiate_consumer():
     consumer_config = {
@@ -44,8 +45,13 @@ def isFraud(transaction):
         'transaction_id': transaction['transaction_id'],
         'fraud': False
     }
-    if transaction['amount'] < 0:
+    fraud_ids = detect([transaction])
+    if (fraud_ids):
+        transaction_id = fraud_ids[0]
+        alert["transaction_id"] = transaction_id
         alert['fraud'] = True
+    # if transaction['amount'] < 0:
+    #     alert['fraud'] = True
 
     return alert 
 
