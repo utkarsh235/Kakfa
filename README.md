@@ -6,26 +6,6 @@ This repository demonstrates key Kafka patterns such as sending messages to a Ka
 
 ---
 
-## 🚀 Project Structure
-
-Kakfa/
-│
-├── send_to_kafka/
-│   ├── producer.py        # Kafka producer for sending messages
-│   └── __init__.py
-│
-├── fraud-detection/
-│   ├── consumer.py        # Kafka consumer for fraud detection logic
-│   └── __init__.py
-│
-├── requirements.txt       # Python dependencies
-├── README.md              # Project documentation
-└── .gitignore             # Files ignored by Git
-
-
-
----
-
 ## 🧠 Overview
 
 This project has two main components:
